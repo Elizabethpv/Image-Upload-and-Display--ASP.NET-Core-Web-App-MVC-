@@ -1,0 +1,27 @@
+﻿@model WebAppDisplay.Models.Photo
+
+<form asp-action="imgpageClick" enctype="multipart/form-data" method="post">
+    <div class="form-group">
+        <label asp-for="Image"></label>
+        <input asp-for="Image" type="file" class="form-control" name="image" />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Upload Image</button>
+</form>
+
+@if (Model?.Image != null)
+{
+    <div>
+        <h3>Uploaded Image:</h3>
+        <img src="~/uploads/@Model.Image" alt="Uploaded Image" style="max-width: 200px;" />
+    </div>
+}
+
+@{
+    if (@TempData["msg"] != null)
+    {
+        <script>
+            alert('@TempData["msg"]')
+        </script>
+    }
+}
